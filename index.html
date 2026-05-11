@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elite Luxury Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              dark: "#020202",
+              luxury: "#0a0a0a",
+              accent: "#ffffff",
+              dim: "#888888",
+              gold: "#c5a059",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              display: ["Syne", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body>
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"></div>
+    <div id="cursor-follower"></div>
+
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav
+      class="fixed w-full z-50 py-6 md:py-10 px-5 sm:px-8 md:px-20 flex justify-between items-center transition-all duration-500"
+      id="navbar"
+    >
+      <a
+        href="#"
+        class="text-3xl font-display font-black tracking-tighter mix-blend-difference"
+      >
+        ARCHITECT<span class="text-dim">.</span>
+      </a>
+      <div
+        class="hidden lg:flex space-x-16 text-[12px] font-black tracking-[0.5em] uppercase opacity-40 mix-blend-difference"
+      >
+        <a
+          href="#about"
+          class="hover:opacity-100 hover:text-white transition-all"
+          >About</a
+        >
+        <a
+          href="#services"
+          class="hover:opacity-100 hover:text-white transition-all"
+          >Services</a
+        >
+        <a
+          href="#skills"
+          class="hover:opacity-100 hover:text-white transition-all"
+          >Skills</a
+        >
+        <a
+          href="#projects"
+          class="hover:opacity-100 hover:text-white transition-all"
+          >Work</a
+        >
+        <a
+          href="#contact"
+          class="hover:opacity-100 hover:text-white transition-all"
+          >Contact</a
+        >
+      </div>
+      <button
+        class="lg:hidden text-2xl z-[60] mix-blend-difference"
+        id="mobile-menu-toggle"
+      >
+        <i class="fas fa-bars-staggered" id="menu-icon"></i>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-dark z-[55] flex flex-col items-center justify-center space-y-8 translate-x-full transition-transform duration-700 ease-in-out lg:hidden"
+    >
+      <a
+        href="#about"
+        class="text-4xl font-display font-bold tracking-tighter hover:text-gold transition-colors mobile-link"
+        >About</a
+      >
+      <a
+        href="#services"
+        class="text-4xl font-display font-bold tracking-tighter hover:text-gold transition-colors mobile-link"
+        >Services</a
+      >
+      <a
+        href="#skills"
+        class="text-4xl font-display font-bold tracking-tighter hover:text-gold transition-colors mobile-link"
+        >Skills</a
+      >
+      <a
+        href="#projects"
+        class="text-4xl font-display font-bold tracking-tighter hover:text-gold transition-colors mobile-link"
+        >Work</a
+      >
+      <a
+        href="#contact"
+        class="text-4xl font-display font-bold tracking-tighter hover:text-gold transition-colors mobile-link"
+        >Contact</a
+      >
+    </div>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center justify-center px-5 sm:px-8 md:px-20 pt-28 md:pt-24 overflow-hidden"
+    >
+      <div
+        class="max-w-[1700px] w-full grid lg:grid-cols-2 gap-20 items-center relative z-10"
+      >
+        <div class="hero-text">
+          <div class="text-mask mb-6">
+            <span
+              class="text-xs font-bold tracking-[0.8em] uppercase opacity-30 block"
+              data-hero-anim
+              >Premium Frontend Engineering</span
+            >
+          </div>
+          <h1
+            class="text-4xl sm:text-6xl lg:text-8xl xl:text-[6rem] font-display font-black leading-[0.9] md:leading-[0.85] tracking-tighter mb-8 md:mb-10"
+            data-hero-anim
+          >
+            CRAFTING <br />
+            DIGITAL <br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/10"
+              >LUXURY.</span
+            >
+          </h1>
+          <p
+            class="text-lg sm:text-xl md:text-2xl opacity-40 max-w-lg mb-10 md:mb-12 font-light leading-relaxed"
+            data-hero-anim
+          >
+            Building high-end web experiences where cinematic design meets
+            flawlessly engineered code.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10"
+            data-hero-anim
+          >
+            <a
+              href="#projects"
+              class="magnetic-btn px-12 py-6 bg-white text-dark rounded-full font-black text-xs tracking-[0.3em] uppercase hover:bg-gold hover:text-white transition-all shadow-2xl"
+            >
+              Explore Works
+            </a>
+            <a
+              href="#contact"
+              class="magnetic-btn text-xs font-black tracking-[0.4em] uppercase border-b-2 border-white/10 pb-3 hover:border-white transition-all"
+            >
+              Get In Touch
+            </a>
+          </div>
+        </div>
+
+        <div class="relative flex justify-center lg:justify-end" data-hero-anim>
+          <div
+            class="glow-effect w-full max-w-full sm:max-w-[450px] md:max-w-[550px] aspect-[4/5] rounded-[2rem] md:rounded-[3rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-2xl group"
+          >
+            <img
+              src="./img/portfolio-img.jpeg"
+              alt="Professional Frontend Developer"
+              class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
+            />
+            <div class="scanline"></div>
+          </div>
+          <!-- Floating Detail -->
+          <div
+            class="absolute -bottom-10 -left-10 luxury-glass p-10 rounded-[2.5rem] hidden xl:block animate-bounce-slow"
+          >
+            <div class="flex items-center space-x-4 mb-3">
+              <div class="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+              <span
+                class="text-[10px] font-bold tracking-widest uppercase opacity-50"
+                >Currently Available</span
+              >
+            </div>
+            <h4 class="text-2xl font-display font-bold">Elite Quality</h4>
+            <p class="text-[10px] opacity-30 mt-1 uppercase tracking-widest">
+              Industry Leading Design
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div
+        class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-20"
+      >
+        <div
+          class="w-[1px] h-24 bg-gradient-to-b from-white to-transparent"
+        ></div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section
+      id="about"
+      class="py-24 md:py-48 px-5 sm:px-8 md:px-20 relative overflow-hidden bg-luxury"
+    >
+      <div class="max-w-5xl mx-auto">
+        <h2
+          class="text-[10px] font-black tracking-[1.2em] uppercase opacity-20 mb-12 md:mb-20 text-center"
+        >
+          Who I Am
+        </h2>
+        <p
+          class="text-3xl sm:text-5xl md:text-7xl font-display font-bold leading-[1.1] text-center mb-16 md:mb-32"
+          data-scroll-reveal
+        >
+          I am a <span class="opacity-30 italic">visionary</span> Frontend
+          Developer dedicated to creating
+          <span class="text-white">cinematic</span> and responsive web
+          experiences.
+        </p>
+        <div class="grid md:grid-cols-2 gap-24">
+          <div class="space-y-8" data-scroll-reveal>
+            <h3 class="text-2xl font-display font-bold">My Mission</h3>
+            <p class="text-lg opacity-40 font-light leading-relaxed">
+              I specialize in transforming complex business ideas into
+              beautiful, user-centric interfaces. My approach combines artistic
+              vision with technical precision to deliver results that matter.
+            </p>
+          </div>
+          <div class="space-y-8" data-scroll-reveal>
+            <h3 class="text-2xl font-display font-bold">My Philosophy</h3>
+            <p class="text-lg opacity-40 font-light leading-relaxed">
+              I believe that every pixel has a purpose. Clean code and smooth
+              interactions are not just requirements—they are the foundation of
+              a premium digital experience.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 md:py-48 px-5 sm:px-8 md:px-20">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-32">
+          <div data-scroll-reveal>
+            <h2
+              class="text-4xl sm:text-6xl lg:text-8xl xl:text-[10rem] font-display font-black tracking-tighter leading-none"
+            >
+              SERVICES<span class="text-gold">.</span>
+            </h2>
+          </div>
+          <div class="hidden md:block opacity-30" data-scroll-reveal>
+            <p class="text-xs font-bold tracking-[0.3em] uppercase">
+              Premium Solutions
+            </p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 md:gap-10">
+          <!-- Service 1 -->
+          <div
+            class="luxury-glass p-12 rounded-[3rem] group"
+            data-scroll-reveal
+          >
+            <div
+              class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white group-hover:text-dark transition-all duration-500"
+            >
+              <i class="fas fa-desktop text-2xl"></i>
+            </div>
+            <h3 class="text-3xl font-display font-bold mb-4">UI/UX Design</h3>
+            <p class="opacity-40 font-light leading-relaxed mb-8">
+              Modern, intuitive, and visually stunning designs that engage users
+              instantly.
+            </p>
+            <ul
+              class="text-xs font-bold tracking-widest uppercase space-y-3 opacity-60"
+            >
+              <li>Visual Identity</li>
+              <li>Prototyping</li>
+            </ul>
+          </div>
+          <!-- Service 2 -->
+          <div
+            class="luxury-glass p-12 rounded-[3rem] group"
+            data-scroll-reveal
+          >
+            <div
+              class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white group-hover:text-dark transition-all duration-500"
+            >
+              <i class="fas fa-code text-2xl"></i>
+            </div>
+            <h3 class="text-3xl font-display font-bold mb-4">
+              Web Development
+            </h3>
+            <p class="opacity-40 font-light leading-relaxed mb-8">
+              High-performance frontend development with clean, scalable code.
+            </p>
+            <ul
+              class="text-xs font-bold tracking-widest uppercase space-y-3 opacity-60"
+            >
+              <li>React & Modern JS</li>
+              <li>Pixel Perfect UI</li>
+            </ul>
+          </div>
+          <!-- Service 3 -->
+          <div
+            class="luxury-glass p-12 rounded-[3rem] group"
+            data-scroll-reveal
+          >
+            <div
+              class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white group-hover:text-dark transition-all duration-500"
+            >
+              <i class="fas fa-mobile-alt text-2xl"></i>
+            </div>
+            <h3 class="text-3xl font-display font-bold mb-4">
+              Responsive Apps
+            </h3>
+            <p class="opacity-40 font-light leading-relaxed mb-8">
+              Seamlessly working applications across all devices and screen
+              sizes.
+            </p>
+            <ul
+              class="text-xs font-bold tracking-widest uppercase space-y-3 opacity-60"
+            >
+              <li>Mobile Optimization</li>
+              <li>Fast Performance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 md:py-48 px-5 sm:px-8 md:px-20 bg-luxury">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 md:mb-32">
+          <h2
+            class="text-[10px] font-black tracking-[1.2em] uppercase opacity-20 mb-6"
+          >
+            Expertise
+          </h2>
+          <h3
+            class="text-3xl sm:text-5xl md:text-7xl font-display font-bold"
+            data-scroll-reveal
+          >
+            Core Technologies
+          </h3>
+        </div>
+
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8"
+        >
+          <div
+            class="skill-card p-10 rounded-[2.5rem] text-center"
+            data-scroll-reveal
+          >
+            <i class="fab fa-html5 text-5xl mb-6 opacity-40"></i>
+            <h4 class="font-bold tracking-widest uppercase text-xs">HTML5</h4>
+          </div>
+          <div
+            class="skill-card p-10 rounded-[2.5rem] text-center"
+            data-scroll-reveal
+          >
+            <i class="fab fa-css3-alt text-5xl mb-6 opacity-40"></i>
+            <h4 class="font-bold tracking-widest uppercase text-xs">CSS3</h4>
+          </div>
+          <div
+            class="skill-card p-10 rounded-[2.5rem] text-center"
+            data-scroll-reveal
+          >
+            <i class="fab fa-js text-5xl mb-6 opacity-40"></i>
+            <h4 class="font-bold tracking-widest uppercase text-xs">
+              JavaScript
+            </h4>
+          </div>
+          <div
+            class="skill-card p-10 rounded-[2.5rem] text-center"
+            data-scroll-reveal
+          >
+            <i class="fab fa-bootstrap text-5xl mb-6 opacity-40"></i>
+            <h4 class="font-bold tracking-widest uppercase text-xs">
+              Bootstrap
+            </h4>
+          </div>
+          <div
+            class="skill-card p-10 rounded-[2.5rem] text-center"
+            data-scroll-reveal
+          >
+            <i class="fas fa-wind text-5xl mb-6 opacity-40"></i>
+            <h4 class="font-bold tracking-widest uppercase text-xs">
+              Tailwind CSS
+            </h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 md:py-48 px-5 sm:px-8 md:px-20">
+      <div class="max-w-[1800px] mx-auto">
+        <div class="flex justify-between items-end mb-32">
+          <div data-scroll-reveal>
+            <h2
+              class="text-4xl sm:text-6xl lg:text-8xl xl:text-9xl font-display font-black tracking-tighter"
+            >
+              SELECTED <br />
+              <span class="opacity-20 italic">WORKS.</span>
+            </h2>
+          </div>
+          <a
+            href="#"
+            class="hidden md:flex items-center space-x-4 group"
+            data-scroll-reveal
+          >
+            <span class="text-xs font-bold tracking-widest uppercase"
+              >View Archive</span
+            >
+            <div
+              class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-dark transition-all"
+            >
+              <i class="fas fa-arrow-right"></i>
+            </div>
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 md:gap-24">
+          <!-- Project 1 -->
+          <div class="project-card group" data-scroll-reveal>
+            <div
+              class="project-image-wrapper mb-10 overflow-hidden rounded-[3.5rem] bg-luxury"
+            >
+              <div class="project-image aspect-[16/10] relative">
+                <img
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                  alt="Fintech App"
+                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+                />
+                <div
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm"
+                >
+                  <a
+                    href="#"
+                    class="px-10 py-5 bg-white text-dark rounded-full font-black text-xs tracking-widest uppercase hover:bg-gold hover:text-white transition-all"
+                    >Live Project</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-between items-start px-6">
+              <div>
+                <h3 class="text-4xl font-display font-bold mb-3">
+                  Neo-Fintech App
+                </h3>
+                <p
+                  class="text-xs font-bold tracking-widest uppercase opacity-30"
+                >
+                  UI/UX Design • React
+                </p>
+              </div>
+              <span class="text-xs font-bold opacity-20">2024</span>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card group" data-scroll-reveal>
+            <div
+              class="project-image-wrapper mb-10 overflow-hidden rounded-[3.5rem] bg-luxury"
+            >
+              <div class="project-image aspect-[16/10] relative">
+                <img
+                  src="https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                  alt="E-Commerce Store"
+                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+                />
+                <div
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm"
+                >
+                  <a
+                    href="#"
+                    class="px-10 py-5 bg-white text-dark rounded-full font-black text-xs tracking-widest uppercase hover:bg-gold hover:text-white transition-all"
+                    >Live Project</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-between items-start px-6">
+              <div>
+                <h3 class="text-4xl font-display font-bold mb-3">
+                  Luxe Couture
+                </h3>
+                <p
+                  class="text-xs font-bold tracking-widest uppercase opacity-30"
+                >
+                  Frontend Architecture
+                </p>
+              </div>
+              <span class="text-xs font-bold opacity-20">2024</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="py-24 md:py-48 px-5 sm:px-8 md:px-20 relative overflow-hidden"
+    >
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
+          <div data-scroll-reveal>
+            <h2
+              class="text-4xl sm:text-6xl lg:text-8xl xl:text-[10rem] font-display font-black tracking-tighter leading-none mb-12"
+            >
+              LET'S <br />
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/20"
+                >TALK.</span
+              >
+            </h2>
+            <p
+              class="text-lg sm:text-xl md:text-2xl opacity-40 mb-16 font-light leading-relaxed"
+            >
+              I am currently accepting elite projects. If you have a vision that
+              requires precision and craft, let's connect.
+            </p>
+            <div class="space-y-10">
+              <div>
+                <p
+                  class="text-[10px] font-bold tracking-widest uppercase opacity-30 mb-2"
+                >
+                  Direct Mail
+                </p>
+                <a
+                  href="mailto:hello@architect.pro"
+                  class="text-3xl font-bold hover:text-gold transition-colors"
+                  >hello@architect.pro</a
+                >
+              </div>
+              <div class="flex space-x-12 opacity-30">
+                <a href="#" class="hover:opacity-100 transition-all"
+                  >LinkedIn</a
+                >
+                <a href="#" class="hover:opacity-100 transition-all">GitHub</a>
+                <a href="#" class="hover:opacity-100 transition-all">Twitter</a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="luxury-glass p-6 sm:p-10 md:p-16 rounded-[2rem] md:rounded-[4rem] relative"
+            data-scroll-reveal
+          >
+            <form class="space-y-10">
+              <div class="space-y-4">
+                <label
+                  class="text-[10px] font-bold tracking-widest uppercase opacity-30 ml-2"
+                  >Your Name</label
+                >
+                <input
+                  type="text"
+                  class="w-full bg-transparent border-b-2 border-white/5 py-4 focus:outline-none focus:border-white transition-all text-xl font-light"
+                />
+              </div>
+              <div class="space-y-4">
+                <label
+                  class="text-[10px] font-bold tracking-widest uppercase opacity-30 ml-2"
+                  >Your Email</label
+                >
+                <input
+                  type="email"
+                  class="w-full bg-transparent border-b-2 border-white/5 py-4 focus:outline-none focus:border-white transition-all text-xl font-light"
+                />
+              </div>
+              <div class="space-y-4">
+                <label
+                  class="text-[10px] font-bold tracking-widest uppercase opacity-30 ml-2"
+                  >Message</label
+                >
+                <textarea
+                  rows="4"
+                  class="w-full bg-transparent border-b-2 border-white/5 py-4 focus:outline-none focus:border-white transition-all text-xl font-light"
+                ></textarea>
+              </div>
+              <button
+                class="magnetic-btn w-full py-8 bg-white text-dark rounded-full font-black text-xs tracking-[0.4em] uppercase hover:bg-gold hover:text-white transition-all"
+              >
+                Initialize Inquiry
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="py-12 md:py-20 px-5 sm:px-8 md:px-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 opacity-20"
+    >
+      <p class="text-[10px] font-bold tracking-[0.5em] uppercase">
+        © 2024 MASTER ARCHITECTS / ALL RIGHTS RESERVED
+      </p>
+      <div
+        class="flex space-x-12 text-[10px] font-bold tracking-[0.5em] uppercase"
+      >
+        <a href="#" class="hover:opacity-100">Privacy</a>
+        <a href="#" class="hover:opacity-100">Terms</a>
+      </div>
+    </footer>
+    <script src="main.js"></script>
+  </body>
+</html>
